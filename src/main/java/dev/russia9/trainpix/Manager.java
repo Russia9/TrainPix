@@ -16,13 +16,15 @@ import org.javacord.api.DiscordApiBuilder;
 public class Manager {
     private static final Logger logger = LogManager.getLogger(Manager.class.getName());
     private String token;
+    private String clientID;
 
-    public Manager(String token) {
+    public Manager(String token, String clientID) {
         this.token = token;
+        this.clientID = clientID;
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
-        api.addReactionAddListener(new ReactionAddListener());
-        api.addMessageCreateListener(new MessageCreateListener());
+        api.addReactionAddListener(new ReactionAddListener(clientID));
+        api.addMessageCreateListener(new MessageCreateListener(clientID));
     }
 }

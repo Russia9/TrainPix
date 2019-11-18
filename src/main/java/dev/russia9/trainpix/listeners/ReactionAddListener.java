@@ -9,6 +9,12 @@ import org.javacord.api.event.message.reaction.ReactionAddEvent;
  * @since v0.0.1
  */
 public class ReactionAddListener implements org.javacord.api.listener.message.reaction.ReactionAddListener {
+    private String clientID;
+
+    public ReactionAddListener(String clientID) {
+        this.clientID = clientID;
+    }
+
     @Override
     public void onReactionAdd(ReactionAddEvent reactionAddEvent) {
 

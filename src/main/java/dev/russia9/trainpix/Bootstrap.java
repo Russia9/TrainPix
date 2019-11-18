@@ -13,10 +13,14 @@ public class Bootstrap {
     private static final Logger logger = LogManager.getLogger(Bootstrap.class.getName());
 
     public Bootstrap() {
-        new Manager(getToken());
+        new Manager(getToken(), getClientID());
     }
 
     private String getToken() {
         return  "";
+    }
+
+    private String getClientID() {
+        return "";
     }
 }
