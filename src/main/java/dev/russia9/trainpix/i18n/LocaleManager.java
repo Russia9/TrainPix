@@ -10,6 +10,12 @@ public class LocaleManager {
                 } else {
                     return "Built: ";
                 }
+            case "train.built.unknown":
+                if (locale.equals("ru")) {
+                    return "Построен: Неизвестно";
+                } else {
+                    return "Built: Unknown";
+                }
             case "train.status.working":
                 if (locale.equals("ru")) {
                     return "Действующий";
@@ -69,6 +75,12 @@ public class LocaleManager {
                     return "Памятник/музейный экспонат/тренажёр ";
                 } else {
                     return "Monument/Museum exhibit/Trainer ";
+                }
+            case "list.results":
+                if (locale.equals("ru")) {
+                    return "Результаты: ";
+                } else {
+                    return "Results: ";
                 }
         }
         return "";
