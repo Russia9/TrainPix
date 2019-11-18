@@ -112,7 +112,7 @@ public class ListModule implements BotModule {
                     }
 
                     if (!row.child(2).text().equals(""))
-                        body.append(localeManager.getString(cookie, "train.built")).append(row.child(2).text());
+                        body.append(localeManager.getString(cookie, "train.built")).append(row.child(3).text());
                     else body.append(localeManager.getString(cookie, "train.built.unknown"));
                     if (row.children().size() > 6) body.append(" | ").append(row.child(6).text());
 
