@@ -5,6 +5,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
 
+/**
+ * Launch class
+ *
+ * @author Russia9
+ * @since v0.0.1
+ */
 public class TrainPix {
     private static final Logger logger = LogManager.getLogger(TrainPix.class.getName());
 
