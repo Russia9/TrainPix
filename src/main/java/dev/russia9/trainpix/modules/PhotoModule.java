@@ -41,8 +41,10 @@ public class PhotoModule implements BotModule {
                 String searchUrl = "https://trainpix.org/search.php?cid=0&did=0&mid=0&place1=&place2=&place3=&notes=&konk=0&cammod=&aid=-1&auth=0&anydate=1&anypub=1&order=3&num=" + URLEncoder.encode(searchQuery, "UTF-8");
 
                 String lang = "en";
-                if (event.getServer().get().getRegion().getKey().equals("russia")) {
-                    lang = "ru";
+                if(event.isServerMessage()) {
+                    if (event.getServer().get().getRegion().getKey().equals("russia")) {
+                        lang = "ru";
+                    }
                 }
 
                 Document document = getPage(searchUrl, lang);
