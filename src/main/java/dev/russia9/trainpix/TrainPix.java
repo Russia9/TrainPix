@@ -12,14 +12,40 @@ import org.apache.logging.log4j.core.config.Configurator;
  * @since v0.0.1
  */
 public class TrainPix {
-    private static final Logger logger = LogManager.getLogger(TrainPix.class.getName());
+    private static final Logger logger = LogManager.getLogger("TrainPix");
 
     public static void main(String[] args) {
+        if (System.getenv("LEVEL") != null) {
+            String level = System.getenv("LEVEL");
+            switch (level) {
+                case "OFF":
+                    Configurator.setLevel("TrainPix", Level.OFF);
+                    break;
+                case "FATAL":
+                    Configurator.setLevel("TrainPix", Level.FATAL);
+                    break;
+                case "ERROR":
+                    Configurator.setLevel("TrainPix", Level.ERROR);
+                    break;
+                case "WARN":
+                    Configurator.setLevel("TrainPix", Level.WARN);
+                    break;
+                case "INFO":
+                    Configurator.setLevel("TrainPix", Level.INFO);
+                    break;
+                case "DEBUG":
+                    Configurator.setLevel("TrainPix", Level.DEBUG);
+                    break;
+                case "TRACE":
+                    Configurator.setLevel("TrainPix", Level.TRACE);
+                    break;
+            }
+        }
         for (String arg : args) {
             if (arg.equals("Debug=true")) {
-                Configurator.setRootLevel(Level.DEBUG);
+                Configurator.setLevel("TrainPix", Level.DEBUG);
             } else if (arg.equals("Trace=true")) {
-                Configurator.setRootLevel(Level.TRACE);
+                Configurator.setLevel("TrainPix", Level.TRACE);
             }
         }
 

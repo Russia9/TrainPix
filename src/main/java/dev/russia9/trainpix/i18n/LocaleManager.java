@@ -6,15 +6,21 @@ public class LocaleManager {
         switch (name) {
             case "train.built":
                 if (locale.equals("ru")) {
-                    return "Построен: ";
+                    return "Построен:";
                 } else {
-                    return "Built: ";
+                    return "Built:";
                 }
             case "train.built.unknown":
                 if (locale.equals("ru")) {
                     return "Построен: Неизвестно";
                 } else {
                     return "Built: Unknown";
+                }
+            case "train.serial":
+                if (locale.equals("ru")) {
+                    return "Зав. тип";
+                } else {
+                    return "Serial type";
                 }
             case "train.status.working":
                 if (locale.equals("ru")) {
@@ -82,6 +88,63 @@ public class LocaleManager {
                 } else {
                     return "Results: ";
                 }
+            case "train.road":
+                if (locale.equals("ru")) {
+                    return "Дорога приписки:";
+                } else {
+                    return "Railway District/Company:";
+                }
+            case "train.road.unknown":
+                if (locale.equals("ru")) {
+                    return "Дорога приписки: Неизвестно";
+                } else {
+                    return "Railway District/Company: Unknown";
+                }
+            case "train.depot":
+                if (locale.equals("ru")) {
+                    return "Депо:";
+                } else {
+                    return "Depot:";
+                }
+            case "train.depot.unknown":
+                if (locale.equals("ru")) {
+                    return "Депо: Неизвестно";
+                } else {
+                    return "Depot: Unknown";
+                }
+            case "train.category":
+                if (locale.equals("ru")) {
+                    return "Категория:";
+                } else {
+                    return "Category:";
+                }
+            case "train.condition":
+                if (locale.equals("ru")) {
+                    return "Текущее состояние:";
+                } else {
+                    return "Current condition:";
+                }
+            case "help.title": {
+                if (locale.equals("ru")) {
+                    return "Список команд TrainPix:";
+                } else {
+                    return "TrainPix command list:";
+                }
+            }
+            case "help.list.description": {
+                if (locale.equals("ru")) {
+                    return "Команда /list выводит список поездов по запросу.";
+                } else {
+                    return "The command /list displays a list of trains upon request.";
+                }
+            }
+            case "help.photo.description": {
+                if (locale.equals("ru")) {
+                    return "Команда /photo выводит фотографию запрошенного поезда.";
+                } else {
+                    return "The /photo command displays a photo of the requested train.";
+                }
+            }
         }
         return "";
     }
