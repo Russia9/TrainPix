@@ -6,9 +6,9 @@ public class LocaleManager {
         switch (name) {
             case "train.built":
                 if (locale.equals("ru")) {
-                    return "Построен: ";
+                    return "Построен:";
                 } else {
-                    return "Built: ";
+                    return "Built:";
                 }
             case "train.built.unknown":
                 if (locale.equals("ru")) {
@@ -90,21 +90,33 @@ public class LocaleManager {
                 }
             case "train.road":
                 if (locale.equals("ru")) {
-                    return "Дорога приписки: ";
+                    return "Дорога приписки:";
                 } else {
-                    return "Home road: ";
+                    return "Home road:";
+                }
+            case "train.road.unknown":
+                if (locale.equals("ru")) {
+                    return "Дорога приписки: Неизвестно";
+                } else {
+                    return "Home road: Unknown";
                 }
             case "train.depot":
                 if (locale.equals("ru")) {
-                    return "Депо: ";
+                    return "Депо:";
                 } else {
-                    return "Depot: ";
+                    return "Depot:";
+                }
+            case "train.depot.unknown":
+                if (locale.equals("ru")) {
+                    return "Депо: Неизвестно";
+                } else {
+                    return "Depot: Unknown";
                 }
             case "train.category":
                 if (locale.equals("ru")) {
-                    return "Категория: ";
+                    return "Категория:";
                 } else {
-                    return "Category: ";
+                    return "Category:";
                 }
         }
         return "";

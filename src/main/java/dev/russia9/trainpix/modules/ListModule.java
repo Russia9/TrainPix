@@ -18,6 +18,9 @@ import static dev.russia9.trainpix.lib.Lib.getPage;
 
 /**
  * /list command module
+ *
+ * @author Russia9
+ * @since 0.1
  */
 public class ListModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
@@ -69,22 +72,39 @@ public class ListModule implements BotModule {
 
                     boolean process = false;
 
-                    head.append(train.getElementsByTag("a").text()); // Train number
+                    // Model detection
+                    String model = train.getElementsByTag("a").text();
 
-                    // TODO: rewrite build date detection
+                    String page = "https://trainpix.org" + train.getElementsByTag("a").attr("href");
+                    Document trainPage = getPage(page, lang);
 
-                    if (document.getElementsContainingOwnText(localeManager.getString(lang, "train.serial")).size() > 0) { // Train build date
-                        if (!train.child(3).text().equals(""))
-                            body.append(localeManager.getString(lang, "train.built")).append(train.child(3).text());
-                        else body.append(localeManager.getString(lang, "train.built.unknown"));
-                    } else {
-                        if (!train.child(2).text().equals(""))
-                            body.append(localeManager.getString(lang, "train.built")).append(train.child(2).text());
-                        else body.append(localeManager.getString(lang, "train.built.unknown"));
+                    // Build date detection
+                    Elements built = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.built"));
+                    String buildDate = localeManager.getString(lang, "train.built.unknown");
+                    if (built.parents().get(0).children().size() > 0) {
+                        buildDate = built.parents().get(0).getElementsByTag("b").text();
                     }
 
-                    // TODO: depot detection
-                    // TODO: road detection
+
+                    // Depot detection
+                    Elements depot = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.depot"));
+                    String depotName = localeManager.getString(lang, "train.depot.unknown");
+                    if (built.parents().get(0).children().size() > 0) {
+                        depotName = depot.parents().get(0).getElementsByTag("a").text();
+                    }
+
+                    // Road detection
+                    Elements road = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.road"));
+                    String roadName = localeManager.getString(lang, "train.road.unknown");
+                    if (road.parents().get(0).children().size() > 0) {
+                        roadName = road.parents().get(0).getElementsByTag("a").text();
+                    }
+
+                    head.append(model);
+                    head.append(" | ").append(roadName);
+
+                    body.append(buildDate);
+                    body.append(" | ").append(depotName);
 
                     switch (train.className()) { // Checking state
                         case "s1":
