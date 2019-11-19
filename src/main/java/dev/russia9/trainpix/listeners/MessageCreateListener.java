@@ -1,6 +1,7 @@
 package dev.russia9.trainpix.listeners;
 
 import dev.russia9.trainpix.i18n.LocaleManager;
+import dev.russia9.trainpix.modules.HelpModule;
 import dev.russia9.trainpix.modules.ListModule;
 import dev.russia9.trainpix.modules.PhotoModule;
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +19,7 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
     private String clientID;
     private ListModule listModule;
     private PhotoModule photoModule;
+    private HelpModule helpModule;
 
     private LocaleManager localeManager;
 
@@ -27,6 +29,7 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
 
         listModule = new ListModule(localeManager);
         photoModule = new PhotoModule(localeManager);
+        helpModule = new HelpModule(localeManager);
     }
 
     @Override
@@ -36,6 +39,9 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
         }
         if (photoModule.check(messageCreateEvent.getMessageContent())) {
             photoModule.process(messageCreateEvent);
+        }
+        if(helpModule.check(messageCreateEvent.getMessageContent())) {
+            helpModule.process(messageCreateEvent);
         }
     }
 }

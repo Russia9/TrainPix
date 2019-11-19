@@ -124,6 +124,27 @@ public class LocaleManager {
                 } else {
                     return "Current condition:";
                 }
+            case "help.title": {
+                if (locale.equals("ru")) {
+                    return "Список команд TrainPix:";
+                } else {
+                    return "TrainPix command list:";
+                }
+            }
+            case "help.list.description": {
+                if (locale.equals("ru")) {
+                    return "Команда /list выводит список поездов по запросу.";
+                } else {
+                    return "The command /list displays a list of trains upon request.";
+                }
+            }
+            case "help.photo.description": {
+                if (locale.equals("ru")) {
+                    return "Команда /photo выводит фотографию запрошенного поезда.";
+                } else {
+                    return "The /photo command displays a photo of the requested train.";
+                }
+            }
         }
         return "";
     }
