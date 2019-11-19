@@ -5,10 +5,14 @@ Discord bot for [TrainPix](https://trainpix.org/)
  - `Docker`
 
 ## Installation
-
-## Configuration
+To run TrainPix in production, it is recommended to use Docker.
+Just pull TrainPix image from Docker Hub and run it with command:
+```shell script
+ $ docker run --env TRAINPIX_TOKEN={{Bot token}} --env TRAINPIX_CLIENTID={{Bot clientid}} russia9/trainpix:latest
+```
 
 ## Used libraries
  - [`log4j2`](https://github.com/apache/logging-log4j2) - Logging
  - [`JSoup`](https://jsoup.org/) - Parsing
+ - [`javacord`](https://github.com/Javacord/Javacord) - Discord API implementation
  
