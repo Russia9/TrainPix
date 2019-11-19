@@ -92,13 +92,13 @@ public class LocaleManager {
                 if (locale.equals("ru")) {
                     return "Дорога приписки:";
                 } else {
-                    return "Home road:";
+                    return "Railway District/Company:";
                 }
             case "train.road.unknown":
                 if (locale.equals("ru")) {
                     return "Дорога приписки: Неизвестно";
                 } else {
-                    return "Home road: Unknown";
+                    return "Railway District/Company: Unknown";
                 }
             case "train.depot":
                 if (locale.equals("ru")) {

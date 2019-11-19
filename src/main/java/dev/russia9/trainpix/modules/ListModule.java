@@ -82,7 +82,7 @@ public class ListModule implements BotModule {
                     Elements built = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.built"));
                     String buildDate = localeManager.getString(lang, "train.built.unknown");
                     if (built.parents().get(0).children().size() > 0) {
-                        buildDate = built.parents().get(0).getElementsByTag("b").text();
+                        buildDate = localeManager.getString(lang, "train.built") + " " + built.parents().get(0).getElementsByTag("b").text();
                     }
 
 
