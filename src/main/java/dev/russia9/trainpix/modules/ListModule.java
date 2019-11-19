@@ -71,6 +71,8 @@ public class ListModule implements BotModule {
 
                     head.append(train.getElementsByTag("a").text()); // Train number
 
+                    // TODO: rewrite build date detection
+
                     if (document.getElementsContainingOwnText(localeManager.getString(lang, "train.serial")).size() > 0) { // Train build date
                         if (!train.child(3).text().equals(""))
                             body.append(localeManager.getString(lang, "train.built")).append(train.child(3).text());
