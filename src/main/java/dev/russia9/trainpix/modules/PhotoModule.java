@@ -41,7 +41,7 @@ public class PhotoModule implements BotModule {
                 String searchUrl = "https://trainpix.org/search.php?cid=0&did=0&mid=0&place1=&place2=&place3=&notes=&konk=0&cammod=&aid=-1&auth=0&anydate=1&anypub=1&order=3&num=" + URLEncoder.encode(searchQuery, "UTF-8");
 
                 String lang = "en";
-                if(event.isServerMessage()) {
+                if (event.isServerMessage()) {
                     if (event.getServer().get().getRegion().getKey().equals("russia")) {
                         lang = "ru";
                     }
@@ -94,36 +94,36 @@ public class PhotoModule implements BotModule {
                     String condition = "Unknown";
                     Element state = photoPage.getElementsByClass("state").first();
                     String stateText = state.text();
-                    if(lang.equals("ru")) {
-                        if(stateText.contains("Новый")) {
+                    if (lang.equals("ru")) {
+                        if (stateText.contains("Новый")) {
                             color = new Color(108, 220, 53);
                         }
-                        if(stateText.contains("Списан")) {
+                        if (stateText.contains("Списан")) {
                             color = new Color(220, 122, 110);
                         }
-                        if(stateText.contains("Не работает")) {
+                        if (stateText.contains("Не работает")) {
                             color = new Color(220, 217, 76);
                         }
-                        if(stateText.contains("Нынешнее местонахождение и судьба неизвестны")) {
+                        if (stateText.contains("Нынешнее местонахождение и судьба неизвестны")) {
                             color = new Color(220, 138, 104);
                         }
-                        if(stateText.contains("Памятник/музейный экспонат/тренажёр")) {
+                        if (stateText.contains("Памятник/музейный экспонат/тренажёр")) {
                             color = new Color(220, 53, 37);
                         }
                     } else {
-                        if(stateText.contains("New")) {
+                        if (stateText.contains("New")) {
                             color = new Color(108, 220, 53);
                         }
-                        if(stateText.contains("Written off")) {
+                        if (stateText.contains("Written off")) {
                             color = new Color(220, 122, 110);
                         }
-                        if(stateText.contains("Out of order")) {
+                        if (stateText.contains("Out of order")) {
                             color = new Color(220, 217, 76);
                         }
-                        if(stateText.contains("Current location and condition are unknown")) {
+                        if (stateText.contains("Current location and condition are unknown")) {
                             color = new Color(220, 138, 104);
                         }
-                        if(stateText.contains("Monument/Museum exhibit/Trainer")) {
+                        if (stateText.contains("Monument/Museum exhibit/Trainer")) {
                             color = new Color(220, 53, 37);
                         }
                     }

@@ -9,13 +9,6 @@
     <version>0.5</version>
     <name>TrainPix</name>
 
-    <repositories>
-        <repository>
-            <id>Jabylon</id>
-            <url>http://www.jabylon.org/maven/</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

@@ -17,7 +17,7 @@ public class Bootstrap {
     }
 
     private String getToken() {
-        if(System.getenv("TRAINPIX_TOKEN") == null) {
+        if (System.getenv("TRAINPIX_TOKEN") == null) {
             logger.fatal("Bot token not found");
             System.exit(1);
             return "-1";
@@ -27,7 +27,7 @@ public class Bootstrap {
     }
 
     private String getClientID() {
-        if(System.getenv("TRAINPIX_CLIENTID") == null) {
+        if (System.getenv("TRAINPIX_CLIENTID") == null) {
             logger.fatal("Bot client ID not found");
             System.exit(1);
             return "-1";
