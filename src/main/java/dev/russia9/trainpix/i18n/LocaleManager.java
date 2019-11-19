@@ -118,6 +118,12 @@ public class LocaleManager {
                 } else {
                     return "Category:";
                 }
+            case "train.condition":
+                if (locale.equals("ru")) {
+                    return "Текущее состояние:";
+                } else {
+                    return "Current condition:";
+                }
         }
         return "";
     }
