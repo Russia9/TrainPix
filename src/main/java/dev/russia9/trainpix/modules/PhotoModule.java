@@ -12,7 +12,6 @@ import org.jsoup.select.Elements;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 import static dev.russia9.trainpix.lib.Lib.getPage;
 
@@ -39,7 +38,7 @@ public class PhotoModule implements BotModule {
             EmbedBuilder reply = new EmbedBuilder();
 
             try {
-                String searchUrl = "https://trainpix.org/search.php?cid=0&did=0&mid=0&place1=&place2=&place3=&notes=&konk=0&cammod=&aid=-1&auth=0&anydate=1&anypub=1&order=3&num=" + URLEncoder.encode(searchQuery, StandardCharsets.UTF_8);
+                String searchUrl = "https://trainpix.org/search.php?cid=0&did=0&mid=0&place1=&place2=&place3=&notes=&konk=0&cammod=&aid=-1&auth=0&anydate=1&anypub=1&order=3&num=" + URLEncoder.encode(searchQuery, "UTF-8");
 
                 String lang = "en";
                 if (event.isServerMessage()) {
