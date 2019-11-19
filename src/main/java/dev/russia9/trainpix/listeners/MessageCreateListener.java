@@ -40,7 +40,7 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
         if (photoModule.check(messageCreateEvent.getMessageContent())) {
             photoModule.process(messageCreateEvent);
         }
-        if(helpModule.check(messageCreateEvent.getMessageContent())) {
+        if (helpModule.check(messageCreateEvent.getMessageContent())) {
             helpModule.process(messageCreateEvent);
         }
     }
