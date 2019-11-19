@@ -16,6 +16,12 @@ public class LocaleManager {
                 } else {
                     return "Built: Unknown";
                 }
+            case "train.serial":
+                if (locale.equals("ru")) {
+                    return "Зав. тип";
+                } else {
+                    return "Serial type";
+                }
             case "train.status.working":
                 if (locale.equals("ru")) {
                     return "Действующий";
@@ -81,6 +87,24 @@ public class LocaleManager {
                     return "Результаты: ";
                 } else {
                     return "Results: ";
+                }
+            case "train.road":
+                if (locale.equals("ru")) {
+                    return "Дорога приписки: ";
+                } else {
+                    return "Home road: ";
+                }
+            case "train.depot":
+                if (locale.equals("ru")) {
+                    return "Депо: ";
+                } else {
+                    return "Depot: ";
+                }
+            case "train.category":
+                if (locale.equals("ru")) {
+                    return "Категория: ";
+                } else {
+                    return "Category: ";
                 }
         }
         return "";
