@@ -64,7 +64,9 @@ public class ListModule implements BotModule {
                 if (size > Reference.maxListSize) size = Reference.maxListSize;
 
                 int i = 0, currentTrain = 2;
-                while (i < size) {
+                while (i <= size && currentTrain <= table.children().size() - 2) {
+                    logger.trace(currentTrain + " " + i);
+                    logger.trace(size + " " + table.children().size());
                     Element train = trains.get(currentTrain);
 
                     StringBuilder head = new StringBuilder();
@@ -159,7 +161,7 @@ public class ListModule implements BotModule {
 
                 reply.setAuthor("TrainPix");
                 reply.setTitle(searchQuery);
-                reply.setFooter(localeManager.getString(lang, "list.results") + size + "/" + count);
+                reply.setFooter(localeManager.getString(lang, "list.results") + i + "/" + count);
             } catch (IOException e) {
                 logger.warn(e);
             }
