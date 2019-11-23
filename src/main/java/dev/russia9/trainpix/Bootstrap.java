@@ -13,7 +13,7 @@ public class Bootstrap {
     private static final Logger logger = LogManager.getLogger(Bootstrap.class.getName());
 
     public Bootstrap() {
-        new Manager(getToken(), getClientID());
+        new Manager(getToken());
     }
 
     private String getToken() {
@@ -23,16 +23,6 @@ public class Bootstrap {
             return "-1";
         } else {
             return System.getenv("TRAINPIX_TOKEN");
-        }
-    }
-
-    private String getClientID() {
-        if (System.getenv("TRAINPIX_CLIENTID") == null) {
-            logger.fatal("Bot client ID not found");
-            System.exit(1);
-            return "-1";
-        } else {
-            return System.getenv("TRAINPIX_CLIENTID");
         }
     }
 }

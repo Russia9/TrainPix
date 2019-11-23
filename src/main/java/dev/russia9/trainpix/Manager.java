@@ -21,13 +21,14 @@ public class Manager {
 
     private LocaleManager localeManager;
 
-    public Manager(String token, String clientID) {
+    public Manager(String token) {
         this.token = token;
-        this.clientID = clientID;
 
         localeManager = new LocaleManager();
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
+
+        this.clientID = api.getClientId()+"";
 
         api.addMessageCreateListener(new MessageCreateListener(clientID, localeManager));
     }

@@ -8,7 +8,7 @@ Discord bot for [TrainPix](https://trainpix.org/)
 To run TrainPix in production, it is recommended to use Docker.
 Just pull TrainPix image from Docker Hub and run it with command:
 ```shell script
- $ docker run --env TRAINPIX_TOKEN={{Bot token}} --env TRAINPIX_CLIENTID={{Bot clientid}} russia9/trainpix:latest
+ $ docker run --env TRAINPIX_TOKEN={{Bot token}} russia9/trainpix:latest
 ```
 
 ## Used libraries
