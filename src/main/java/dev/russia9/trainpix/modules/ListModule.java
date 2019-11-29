@@ -25,6 +25,10 @@ import static dev.russia9.trainpix.lib.Lib.getPage;
 public class ListModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
     private LocaleManager localeManager;
+    private String[] aliases = {
+            "list",
+            "l"
+    };
 
     public ListModule(LocaleManager localeManager) {
         this.localeManager = localeManager;
@@ -32,8 +36,11 @@ public class ListModule implements BotModule {
 
     @Override
     public boolean check(String message) {
-        logger.trace("Check `" + message + "`");
-        return message.contains("/list");
+        logger.trace("Check `" + message + "` for List");
+        for (String alias : aliases) {
+            if (message.contains(alias)) return true;
+        }
+        return false;
     }
 
     @Override
