@@ -18,6 +18,11 @@ import static dev.russia9.trainpix.lib.Lib.getPage;
 public class PhotoModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
     private LocaleManager localeManager;
+    private String[] aliases = {
+            "photo",
+            "ph",
+            "p"
+    };
 
     public PhotoModule(LocaleManager localeManager) {
         this.localeManager = localeManager;
@@ -25,8 +30,11 @@ public class PhotoModule implements BotModule {
 
     @Override
     public boolean check(String message) {
-        logger.trace("Check `" + message + "`");
-        return message.contains("/photo");
+        logger.trace("Check `" + message + "` for Photo");
+        for (String alias : aliases) {
+            if (message.contains(alias)) return true;
+        }
+        return false;
     }
 
     @Override
