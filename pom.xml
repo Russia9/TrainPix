@@ -6,7 +6,7 @@
 
     <groupId>dev.russia9</groupId>
     <artifactId>trainpix</artifactId>
-    <version>0.6</version>
+    <version>1.0-snapshot</version>
     <name>TrainPix</name>
 
     <dependencies>
