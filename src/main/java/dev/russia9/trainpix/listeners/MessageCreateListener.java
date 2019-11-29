@@ -27,6 +27,7 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
                 new ListModule(localeManager),
                 new PhotoModule(localeManager),
                 new HelpModule(localeManager),
+                new TrainModule(localeManager)
         };
     }
 
