@@ -9,6 +9,11 @@ import org.javacord.api.event.message.MessageCreateEvent;
 public class HelpModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
     private LocaleManager localeManager;
+    private String[] aliases = {
+            "photo",
+            "ph",
+            "p"
+    };
 
     public HelpModule(LocaleManager localeManager) {
         this.localeManager = localeManager;
@@ -16,11 +21,16 @@ public class HelpModule implements BotModule {
 
     @Override
     public boolean check(String message) {
-        return message.contains("/help");
+        logger.trace("Check `" + message + "` for " + this.getClass().getName());
+        for (String alias : aliases) {
+            if (message.contains(alias)) return true;
+        }
+        return false;
     }
 
     @Override
     public void process(MessageCreateEvent event) {
+        logger.debug(this.getClass().getName() + " Processing `" + event.getMessageContent() + "`");
         EmbedBuilder reply = new EmbedBuilder();
 
         String lang = "en";

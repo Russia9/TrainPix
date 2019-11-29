@@ -20,7 +20,6 @@ public class PhotoModule implements BotModule {
     private LocaleManager localeManager;
     private String[] aliases = {
             "photo",
-            "ph",
             "p"
     };
 
@@ -30,7 +29,7 @@ public class PhotoModule implements BotModule {
 
     @Override
     public boolean check(String message) {
-        logger.trace("Check `" + message + "` for Photo");
+        logger.trace("Check `" + message + "` for " + this.getClass().getName());
         for (String alias : aliases) {
             if (message.contains(alias)) return true;
         }
@@ -39,7 +38,7 @@ public class PhotoModule implements BotModule {
 
     @Override
     public void process(MessageCreateEvent event) {
-        logger.debug("Processing `" + event.getMessageContent() + "`");
+        logger.debug(this.getClass().getName() + " Processing `" + event.getMessageContent() + "`");
         String[] message = event.getMessageContent().split(" ");
         if (message.length == 2) { // First page
             String searchQuery = message[1];
