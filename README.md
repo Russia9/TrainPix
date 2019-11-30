@@ -11,6 +11,13 @@ Just pull TrainPix image from Docker Hub and run it with command:
  $ docker run --env TRAINPIX_TOKEN={{Bot token}} russia9/trainpix:latest
 ```
 
+## Usage
+| Name | Summary | Parameters | Example | Aliases
+| - | - | - | - | -
+| /help | Display help menu | - | `/help` |  `/help`
+| /list | Display list of trains | Part of train number | `/l ЭП2Д-0` |  `/list`, `/l`
+| /photo | Display photo of train | Train number | `/p ЭР2-1338` |  `/photo`, `/p`
+
 ## Used libraries
  - [`log4j2`](https://github.com/apache/logging-log4j2) - Logging
  - [`JSoup`](https://jsoup.org/) - Parsing
