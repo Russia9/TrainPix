@@ -45,7 +45,6 @@ public class ListModule implements BotModule {
 
     @Override
     public void process(MessageCreateEvent event) {
-        logger.debug(this.getClass().getName() + " Processing `" + event.getMessageContent() + "`");
         String[] message = event.getMessageContent().split(" ");
         if (message.length == 2) { // First page
             String searchQuery = message[1];

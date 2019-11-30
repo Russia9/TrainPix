@@ -34,6 +34,6 @@ public class TrainModule implements BotModule {
 
     @Override
     public void process(MessageCreateEvent event) {
-        logger.debug(this.getClass().getName() + " Processing `" + event.getMessageContent() + "`");
+
     }
 }

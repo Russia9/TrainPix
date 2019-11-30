@@ -33,8 +33,11 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
 
     @Override
     public void onMessageCreate(MessageCreateEvent messageCreateEvent) {
+        String messageContent = messageCreateEvent.getMessageContent();
+
         for (BotModule module : modules) {
-            if (module.check(messageCreateEvent.getMessage().getContent())) {
+            if (module.check(messageContent)) {
+                logger.debug(module.getClass().getName() + " Processing `" + messageContent + "`");
                 module.process(messageCreateEvent);
             }
         }

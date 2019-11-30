@@ -30,7 +30,6 @@ public class HelpModule implements BotModule {
 
     @Override
     public void process(MessageCreateEvent event) {
-        logger.debug(this.getClass().getName() + " Processing `" + event.getMessageContent() + "`");
         EmbedBuilder reply = new EmbedBuilder();
 
         String lang = "en";
