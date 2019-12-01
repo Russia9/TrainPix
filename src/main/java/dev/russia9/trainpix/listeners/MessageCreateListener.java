@@ -39,6 +39,7 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
             if (module.check(messageContent)) {
                 logger.debug(module.getClass().getName() + " Processing `" + messageContent + "`");
                 module.process(messageCreateEvent);
+                break;
             }
         }
     }
