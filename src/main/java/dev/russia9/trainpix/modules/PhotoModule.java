@@ -1,7 +1,6 @@
 package dev.russia9.trainpix.modules;
 
 import dev.russia9.trainpix.i18n.LocaleManager;
-import dev.russia9.trainpix.lib.Reference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
@@ -16,6 +15,12 @@ import java.net.URLEncoder;
 
 import static dev.russia9.trainpix.lib.Lib.getPage;
 
+/**
+ * /photo command module
+ *
+ * @author Russia9
+ * @since 0.1
+ */
 public class PhotoModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
     private LocaleManager localeManager;
@@ -29,12 +34,8 @@ public class PhotoModule implements BotModule {
     }
 
     @Override
-    public boolean check(String message) {
-        logger.trace("Check `" + message + "` for " + this.getClass().getName());
-        for (String alias : aliases) {
-            if (message.startsWith(Reference.botPrefix + alias)) return true;
-        }
-        return false;
+    public String[] getAliases() {
+        return aliases;
     }
 
     @Override

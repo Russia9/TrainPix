@@ -1,6 +1,7 @@
 package dev.russia9.trainpix.listeners;
 
 import dev.russia9.trainpix.i18n.LocaleManager;
+import dev.russia9.trainpix.lib.Reference;
 import dev.russia9.trainpix.modules.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,10 +37,17 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
         String messageContent = messageCreateEvent.getMessageContent();
 
         for (BotModule module : modules) {
-            if (module.check(messageContent)) {
-                logger.debug(module.getClass().getName() + " Processing `" + messageContent + "`");
-                module.process(messageCreateEvent);
-                break;
+            logger.trace("Check `" + messageContent + "` for " + module.getClass().getName());
+
+            String[] aliases = module.getAliases();
+            for (String alias : aliases) {
+                if(messageContent.split(" ").length > 0) {
+                    if (messageContent.split(" ")[0].equals(Reference.botPrefix + alias)) {
+                        logger.debug(module.getClass().getName() + " Processing `" + messageContent + "`");
+                        module.process(messageCreateEvent);
+                        break;
+                    }
+                }
             }
         }
     }

@@ -88,6 +88,12 @@ public class LocaleManager {
                 } else {
                     return "Results: ";
                 }
+            case "list.nothing":
+                if (locale.equals("ru")) {
+                    return "Ничего не найдено.";
+                } else {
+                    return "Nothing found.";
+                }
             case "train.road":
                 if (locale.equals("ru")) {
                     return "Дорога приписки:";
