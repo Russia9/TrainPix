@@ -67,12 +67,10 @@ public class ListModule implements BotModule {
                 int count = Integer.parseInt(document.getElementsByClass("main").get(0).getElementsByTag("p").get(0).getElementsByTag("b").get(0).text());
 
                 int size = table.children().size() - 3;
-                if (size > Reference.maxListSize) size = Reference.maxListSize;
+                if (size > Reference.maxListSize) size = Reference.maxListSize - 1;
 
                 int i = 0, currentTrain = 2;
                 while (i <= size && currentTrain <= table.children().size() - 2) {
-                    logger.trace(currentTrain + " " + i);
-                    logger.trace(size + " " + table.children().size());
                     Element train = trains.get(currentTrain);
 
                     StringBuilder head = new StringBuilder();
@@ -89,23 +87,29 @@ public class ListModule implements BotModule {
                     // Build date detection
                     Elements built = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.built"));
                     String buildDate = localeManager.getString(lang, "train.built.unknown");
-                    if (built.parents().get(0).children().size() > 0) {
-                        buildDate = localeManager.getString(lang, "train.built") + " " + built.parents().get(0).getElementsByTag("b").text();
+                    if (!built.isEmpty()) {
+                        if (built.parents().get(0).children().size() > 0) {
+                            buildDate = localeManager.getString(lang, "train.built") + " " + built.parents().get(0).getElementsByTag("b").text();
+                        }
                     }
 
 
                     // Depot detection
                     Elements depot = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.depot"));
                     String depotName = localeManager.getString(lang, "train.depot.unknown");
-                    if (built.parents().get(0).children().size() > 0) {
-                        depotName = depot.parents().get(0).getElementsByTag("a").text();
+                    if (!depot.isEmpty()) {
+                        if (depot.parents().get(0).children().size() > 0) {
+                            depotName = depot.parents().get(0).getElementsByTag("a").text();
+                        }
                     }
 
                     // Road detection
                     Elements road = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.road"));
                     String roadName = localeManager.getString(lang, "train.road.unknown");
-                    if (road.parents().get(0).children().size() > 0) {
-                        roadName = road.parents().get(0).getElementsByTag("a").text();
+                    if (!depot.isEmpty()) {
+                        if (road.parents().get(0).children().size() > 0) {
+                            roadName = road.parents().get(0).getElementsByTag("a").text();
+                        }
                     }
 
                     head.append(model);
