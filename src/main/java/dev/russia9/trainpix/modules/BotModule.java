@@ -10,12 +10,16 @@ import org.javacord.api.event.message.MessageCreateEvent;
  */
 public interface BotModule {
     /**
-     * Checking messages for relation to this module.
+     * Get module command aliases
      *
-     * @param message message
-     * @return true if related, false if no
+     * @return String[] aliases
      */
-    boolean check(String message);
+    String[] getAliases();
 
+    /**
+     * Process event for this module
+     *
+     * @param event event
+     */
     void process(MessageCreateEvent event);
 }

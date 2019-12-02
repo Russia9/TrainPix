@@ -24,16 +24,12 @@ public class TrainModule implements BotModule {
     }
 
     @Override
-    public boolean check(String message) {
-        logger.trace("Check `" + message + "` for " + this.getClass().getName());
-        for (String alias : aliases) {
-            if (message.contains(alias)) return true;
-        }
-        return false;
+    public String[] getAliases() {
+        return aliases;
     }
 
     @Override
     public void process(MessageCreateEvent event) {
-        logger.debug(this.getClass().getName() + " Processing `" + event.getMessageContent() + "`");
+
     }
 }

@@ -6,13 +6,17 @@ import org.apache.logging.log4j.Logger;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.event.message.MessageCreateEvent;
 
+/**
+ * /help command module
+ *
+ * @author Russia9
+ * @since 0.1
+ */
 public class HelpModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
     private LocaleManager localeManager;
     private String[] aliases = {
-            "photo",
-            "ph",
-            "p"
+            "help"
     };
 
     public HelpModule(LocaleManager localeManager) {
@@ -20,17 +24,12 @@ public class HelpModule implements BotModule {
     }
 
     @Override
-    public boolean check(String message) {
-        logger.trace("Check `" + message + "` for " + this.getClass().getName());
-        for (String alias : aliases) {
-            if (message.contains(alias)) return true;
-        }
-        return false;
+    public String[] getAliases() {
+        return aliases;
     }
 
     @Override
     public void process(MessageCreateEvent event) {
-        logger.debug(this.getClass().getName() + " Processing `" + event.getMessageContent() + "`");
         EmbedBuilder reply = new EmbedBuilder();
 
         String lang = "en";
