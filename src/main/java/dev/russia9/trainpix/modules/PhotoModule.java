@@ -69,7 +69,7 @@ public class PhotoModule implements BotModule {
 
                     // Build date detection
                     Elements built = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.built"));
-                    String buildDate = localeManager.getString(lang, "train.built.unknown");
+                    String buildDate = localeManager.getString(lang, "train.built") + localeManager.getString(lang, "unknown");
                     if (built.parents().get(0).children().size() > 0) {
                         buildDate = localeManager.getString(lang, "train.built") + " " + built.parents().get(0).getElementsByTag("b").text();
                     }
@@ -77,14 +77,14 @@ public class PhotoModule implements BotModule {
 
                     // Depot detection
                     Elements depot = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.depot"));
-                    String depotName = localeManager.getString(lang, "train.depot.unknown");
+                    String depotName = localeManager.getString(lang, "train.depot") + localeManager.getString(lang, "unknown");
                     if (built.parents().get(0).children().size() > 0) {
                         depotName = depot.parents().get(0).getElementsByTag("a").text();
                     }
 
                     // Road detection
                     Elements road = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.road"));
-                    String roadName = localeManager.getString(lang, "train.road.unknown");
+                    String roadName = localeManager.getString(lang, "train.road") + localeManager.getString(lang, "unknown");
                     if (road.parents().get(0).children().size() > 0) {
                         roadName = road.parents().get(0).getElementsByTag("a").text();
                     }
