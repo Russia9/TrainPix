@@ -13,7 +13,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URLEncoder;
 
-import static dev.russia9.trainpix.lib.Lib.getPage;
+import static dev.russia9.trainpix.lib.ParseHelper.getPage;
 
 /**
  * /photo command module
@@ -49,11 +49,11 @@ public class PhotoModule implements BotModule {
                 String searchUrl = "https://trainpix.org/search.php?cid=0&did=0&mid=0&place1=&place2=&place3=&notes=&konk=0&cammod=&aid=-1&auth=0&anydate=1&anypub=1&order=3&num=" + URLEncoder.encode(searchQuery, "UTF-8");
 
                 String lang = "en";
-                if (event.isServerMessage()) {
-                    if (event.getServer().get().getRegion().getKey().equals("russia")) {
-                        lang = "ru";
-                    }
+                if (event.isServerMessage() && event.getServer().get().getRegion().getKey().equals("russia")) {
+                    lang = "ru";
                 }
+
+                logger.trace("Detected LANG:" + lang);
 
                 Document document = getPage(searchUrl, lang);
                 Elements photos = document.getElementsByClass("x");
@@ -71,46 +71,40 @@ public class PhotoModule implements BotModule {
                     // Build date detection
                     Elements built = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.built"));
                     String buildDate = localeManager.getString(lang, "train.built") + " " + localeManager.getString(lang, "unknown");
-                    if (!built.isEmpty()) {
-                        if (built.parents().get(0).children().size() > 0) {
-                            buildDate = localeManager.getString(lang, "train.built") + " " + built.parents().get(0).getElementsByTag("b").text();
-                        }
-                    }
 
+                    if (!built.isEmpty() && built.parents().get(0).children().size() > 0) {
+                        buildDate = localeManager.getString(lang, "train.built") + " " + built.parents().get(0).getElementsByTag("b").text();
+                    }
 
                     // Depot detection
                     Elements depot = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.depot"));
                     String depotName = localeManager.getString(lang, "train.depot") + " " + localeManager.getString(lang, "unknown");
-                    if (!depot.isEmpty()) {
-                        if (depot.parents().get(0).children().size() > 0) {
-                            depotName = depot.parents().get(0).getElementsByTag("a").text();
-                        }
+
+                    if (!depot.isEmpty() && depot.parents().get(0).children().size() > 0) {
+                        depotName = depot.parents().get(0).getElementsByTag("a").text();
                     }
 
                     // Road detection
                     Elements road = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.road"));
                     String roadName = localeManager.getString(lang, "train.road") + " " + localeManager.getString(lang, "unknown");
-                    if (!depot.isEmpty()) {
-                        if (road.parents().get(0).children().size() > 0) {
-                            roadName = road.parents().get(0).getElementsByTag("a").text();
-                        }
+
+                    if (!road.isEmpty() && road.parents().get(0).children().size() > 0) {
+                        roadName = road.parents().get(0).getElementsByTag("a").text();
                     }
 
                     // Category detection
                     Elements category = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.category"));
                     String categoryName = "Other";
-                    if (!category.isEmpty()) {
-                        if (road.parents().get(0).children().size() > 0) {
-                            categoryName = category.parents().get(0).child(1).text();
-                        }
+
+                    if (!category.isEmpty() && road.parents().get(0).children().size() > 0) {
+                        categoryName = category.parents().get(0).child(1).text();
                     }
 
                     // Condition and color detection
                     Color color = new Color(220, 220, 220);
-                    String condition = "Unknown";
                     Element state = photoPage.getElementsByClass("state").first();
                     String stateText = state.text();
-                    if (lang.equals("ru")) {
+                    if ("ru".equals(lang)) {
                         if (stateText.contains("Новый")) {
                             color = new Color(108, 220, 53);
                         }
@@ -144,11 +138,11 @@ public class PhotoModule implements BotModule {
                         }
                     }
 
-                    reply.setAuthor(searchQuery);
+                    reply.setAuthor(searchQuery, authorLink, "https://cdn.discordapp.com/avatars/600625694837571584/2f125e525b56d3aff223022d0b24282f.png?size=128");
                     reply.addField(roadName + " | " + depotName, categoryName + " | " + stateText);
                     reply.setImage(photoLink);
                     reply.setColor(color);
-                    reply.setFooter(authorName);
+                    reply.setFooter(authorName + " | " + buildDate);
                 } else { // 404
                     reply.setAuthor("TrainPix");
                     reply.setTitle("404 Error");

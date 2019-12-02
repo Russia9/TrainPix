@@ -6,7 +6,7 @@
 
     <groupId>dev.russia9</groupId>
     <artifactId>trainpix</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>TrainPix</name>
 
     <dependencies>
@@ -53,7 +53,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

@@ -30,21 +30,21 @@ public class TrainPix {
                 case "WARN":
                     Configurator.setLevel("TrainPix", Level.WARN);
                     break;
-                case "INFO":
-                    Configurator.setLevel("TrainPix", Level.INFO);
-                    break;
                 case "DEBUG":
                     Configurator.setLevel("TrainPix", Level.DEBUG);
                     break;
                 case "TRACE":
                     Configurator.setLevel("TrainPix", Level.TRACE);
                     break;
+                default:
+                    Configurator.setLevel("TrainPix", Level.INFO);
+                    break;
             }
         }
         for (String arg : args) {
-            if (arg.equals("Debug=true")) {
+            if ("Debug=true".equals(arg)) {
                 Configurator.setLevel("TrainPix", Level.DEBUG);
-            } else if (arg.equals("Trace=true")) {
+            } else if ("Trace=true".equals(arg)) {
                 Configurator.setLevel("TrainPix", Level.TRACE);
             }
         }
