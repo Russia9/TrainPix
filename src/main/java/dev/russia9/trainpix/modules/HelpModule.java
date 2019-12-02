@@ -33,7 +33,7 @@ public class HelpModule implements BotModule {
         EmbedBuilder reply = new EmbedBuilder();
 
         String lang = "en";
-        if (event.getServer().get().getRegion().getKey().equals("russia")) {
+        if (event.isServerMessage() && event.getServer().get().getRegion().getKey().equals("russia")) {
             lang = "ru";
         }
         logger.trace("Detected LANG: " + lang);

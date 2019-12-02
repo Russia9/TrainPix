@@ -50,7 +50,7 @@ public class ListModule implements BotModule {
                 String searchUrl = "https://trainpix.org/vsearch.php?cid=0&did=0&mid=0&zid=0&serial_type=&works_number=&id_number=&anybuilt=1&anywritt=1&state=0&note=&info=&order=0&num=" + URLEncoder.encode(searchQuery, "UTF-8");
 
                 String lang = "en";
-                if (event.getServer().get().getRegion().getKey().equals("russia")) {
+                if (event.isServerMessage() && event.getServer().get().getRegion().getKey().equals("russia")) {
                     lang = "ru";
                 }
                 logger.trace("Detected LANG: " + lang);

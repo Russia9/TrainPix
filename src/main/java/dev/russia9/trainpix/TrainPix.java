@@ -38,6 +38,7 @@ public class TrainPix {
                     break;
                 default:
                     Configurator.setLevel("TrainPix", Level.INFO);
+                    break;
             }
         }
         for (String arg : args) {
