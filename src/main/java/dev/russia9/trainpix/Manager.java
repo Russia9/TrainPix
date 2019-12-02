@@ -22,8 +22,6 @@ public class Manager {
         logger.trace("Creating DiscordApi");
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
-        String clientID = api.getClientId() + "";
-
-        api.addMessageCreateListener(new MessageCreateListener(clientID, localeManager));
+        api.addMessageCreateListener(new MessageCreateListener(localeManager));
     }
 }
