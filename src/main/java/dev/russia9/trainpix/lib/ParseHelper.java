@@ -5,7 +5,7 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
-public class Lib {
+public class ParseHelper {
     public static Document getPage(String url, String lang) throws IOException {
         return Jsoup
                 .connect(url)

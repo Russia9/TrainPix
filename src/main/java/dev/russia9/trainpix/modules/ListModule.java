@@ -14,7 +14,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.net.URLEncoder;
 
-import static dev.russia9.trainpix.lib.Lib.getPage;
+import static dev.russia9.trainpix.lib.ParseHelper.getPage;
 
 /**
  * /list command module
@@ -84,29 +84,25 @@ public class ListModule implements BotModule {
                         // Build date detection
                         Elements built = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.built"));
                         String buildDate = localeManager.getString(lang, "train.built") + " " + localeManager.getString(lang, "unknown");
-                        if (!built.isEmpty()) {
-                            if (built.parents().get(0).children().size() > 0) {
-                                buildDate = localeManager.getString(lang, "train.built") + " " + built.parents().get(0).getElementsByTag("b").text();
-                            }
-                        }
 
+                        if (!built.isEmpty() && built.parents().get(0).children().size() > 0) {
+                            buildDate = localeManager.getString(lang, "train.built") + " " + built.parents().get(0).getElementsByTag("b").text();
+                        }
 
                         // Depot detection
                         Elements depot = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.depot"));
                         String depotName = localeManager.getString(lang, "train.depot") + " " + localeManager.getString(lang, "unknown");
-                        if (!depot.isEmpty()) {
-                            if (depot.parents().get(0).children().size() > 0) {
-                                depotName = depot.parents().get(0).getElementsByTag("a").text();
-                            }
+
+                        if (!depot.isEmpty() && depot.parents().get(0).children().size() > 0) {
+                            depotName = depot.parents().get(0).getElementsByTag("a").text();
                         }
 
                         // Road detection
                         Elements road = trainPage.getElementsContainingOwnText(localeManager.getString(lang, "train.road"));
                         String roadName = localeManager.getString(lang, "train.road") + " " + localeManager.getString(lang, "unknown");
-                        if (!depot.isEmpty()) {
-                            if (road.parents().get(0).children().size() > 0) {
-                                roadName = road.parents().get(0).getElementsByTag("a").text();
-                            }
+
+                        if (!road.isEmpty() && road.parents().get(0).children().size() > 0) {
+                            roadName = road.parents().get(0).getElementsByTag("a").text();
                         }
 
                         head.append(model);

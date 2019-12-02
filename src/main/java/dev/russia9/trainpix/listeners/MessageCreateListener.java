@@ -15,20 +15,13 @@ import org.javacord.api.event.message.MessageCreateEvent;
  */
 public class MessageCreateListener implements org.javacord.api.listener.message.MessageCreateListener {
     private static final Logger logger = LogManager.getLogger("TrainPix");
-    private String clientID;
-    private BotModule modules[];
-
-    private LocaleManager localeManager;
+    private BotModule[] modules;
 
     public MessageCreateListener(String clientID, LocaleManager localeManager) {
-        this.clientID = clientID;
-        this.localeManager = localeManager;
-
         modules = new BotModule[]{
                 new ListModule(localeManager),
                 new PhotoModule(localeManager),
-                new HelpModule(localeManager),
-                new TrainModule(localeManager)
+                new HelpModule(localeManager)
         };
     }
 
@@ -41,12 +34,10 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
 
             String[] aliases = module.getAliases();
             for (String alias : aliases) {
-                if(messageContent.split(" ").length > 0) {
-                    if (messageContent.split(" ")[0].equals(Reference.botPrefix + alias)) {
-                        logger.debug(module.getClass().getName() + " Processing `" + messageContent + "`");
-                        module.process(messageCreateEvent);
-                        break;
-                    }
+                if (messageContent.split(" ").length > 0 && messageContent.split(" ")[0].equals(Reference.botPrefix + alias)) {
+                    logger.debug(module.getClass().getName() + " Processing `" + messageContent + "`");
+                    module.process(messageCreateEvent);
+                    break;
                 }
             }
         }

@@ -4,12 +4,11 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class LocaleManager {
-    private Locale[] locales;
     private ResourceBundle[] resourceBundles;
 
     public LocaleManager() {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        locales = new Locale[]{
+        Locale[] locales = new Locale[]{
                 new Locale("ru", "RU"),
                 new Locale("en", "US")
         };
@@ -20,11 +19,9 @@ public class LocaleManager {
     }
 
     public String getString(String locale, String name) {
-        switch (locale) {
-            case "ru":
-                return resourceBundles[0].getString(name);
-            default:
-                return resourceBundles[1].getString(name);
+        if ("ru".equals(locale)) {
+            return resourceBundles[0].getString(name);
         }
+        return resourceBundles[1].getString(name);
     }
 }

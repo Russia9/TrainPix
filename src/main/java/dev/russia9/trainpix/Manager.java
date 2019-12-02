@@ -16,19 +16,13 @@ import org.javacord.api.DiscordApiBuilder;
 public class Manager {
     private static final Logger logger = LogManager.getLogger("TrainPix");
 
-    private String token;
-    private String clientID;
-
-    private LocaleManager localeManager;
-
     public Manager(String token) {
-        this.token = token;
-
-        localeManager = new LocaleManager();
-
+        logger.trace("Creating LocaleManager");
+        LocaleManager localeManager = new LocaleManager();
+        logger.trace("Creating DiscordApi");
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
-        this.clientID = api.getClientId() + "";
+        String clientID = api.getClientId() + "";
 
         api.addMessageCreateListener(new MessageCreateListener(clientID, localeManager));
     }
