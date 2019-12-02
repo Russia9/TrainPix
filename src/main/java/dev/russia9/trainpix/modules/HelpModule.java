@@ -39,8 +39,10 @@ public class HelpModule implements BotModule {
         logger.trace("Detected LANG: " + lang);
 
         reply.setAuthor("TrainPix");
-        reply.setTitle(localeManager.getString(lang, "help.title"));
-        reply.addField(localeManager.getString(lang, "help.list.description"), localeManager.getString(lang, "help.photo.description"));
+
+        reply.addField(localeManager.getString(lang, "list.help.title"), localeManager.getString(lang, "list.help.description"));
+        reply.addField(localeManager.getString(lang, "photo.help.title"), localeManager.getString(lang, "photo.help.description"));
+
         reply.setFooter("(c) Russia9 2019");
         event.getChannel().sendMessage(reply);
     }
