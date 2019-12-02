@@ -56,7 +56,7 @@ public class ListModule implements BotModule {
                 logger.trace("Detected LANG: " + lang);
 
                 Document document = getPage(searchUrl, lang);
-
+              
                 if (document.getElementsContainingOwnText(localeManager.getString(lang, "list.nothing")).isEmpty()) {
                     Element table = document.getElementsByClass("main").get(0).getElementsByTag("table").get(0).child(0);
                     Elements trains = table.children();
