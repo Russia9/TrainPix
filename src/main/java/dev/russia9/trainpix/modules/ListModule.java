@@ -66,7 +66,8 @@ public class ListModule implements BotModule {
                     int size = table.children().size() - 3;
                     if (size > Reference.maxListSize) size = Reference.maxListSize - 1;
 
-                    int i = 0, currentTrain = 2;
+                    int i = 0;
+                    int currentTrain = 2;
                     while (i <= size && currentTrain <= table.children().size() - 2) {
                         Element train = trains.get(currentTrain);
 
@@ -153,6 +154,8 @@ public class ListModule implements BotModule {
                                 head.append(" | ").append(localeManager.getString(lang, "train.status.monument"));
                                 ++i;
                                 process = true;
+                                break;
+                            default:
                                 break;
                         }
 

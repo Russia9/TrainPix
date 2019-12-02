@@ -104,7 +104,7 @@ public class PhotoModule implements BotModule {
                     Color color = new Color(220, 220, 220);
                     Element state = photoPage.getElementsByClass("state").first();
                     String stateText = state.text();
-                    if (lang.equals("ru")) {
+                    if ("ru".equals(lang)) {
                         if (stateText.contains("Новый")) {
                             color = new Color(108, 220, 53);
                         }
