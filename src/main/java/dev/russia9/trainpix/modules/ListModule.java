@@ -164,11 +164,11 @@ public class ListModule implements BotModule {
                         ++currentTrain;
                     }
 
-                    reply.setAuthor("TrainPix");
+                    reply.setAuthor(Reference.botName);
                     reply.setTitle(searchQuery);
                     reply.setFooter(localeManager.getString(lang, "list.results") + i + "/" + count);
                 } else {
-                    reply.setAuthor("TrainPix");
+                    reply.setAuthor(Reference.botName);
                     reply.setTitle(localeManager.getString(lang, "errors.404.header"));
                     reply.addField(localeManager.getString(lang, "errors.404.title"), localeManager.getString(lang, "errors.404.description"));
                 }

@@ -1,5 +1,6 @@
 package dev.russia9.trainpix;
 
+import dev.russia9.trainpix.lib.Reference;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -49,8 +50,8 @@ public class TrainPix {
             }
         }
 
-        logger.info("TrainPix v0.1 by Russia9");
-        logger.info("For more information: https://github.com/Russia9/TrainPix");
+        logger.info(Reference.botName + " v0.1 by Russia9");
+        logger.info("For more information: " + Reference.botSourcesLink);
 
         new Bootstrap();
     }

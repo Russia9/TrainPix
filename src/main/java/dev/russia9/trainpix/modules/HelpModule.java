@@ -1,6 +1,7 @@
 package dev.russia9.trainpix.modules;
 
 import dev.russia9.trainpix.i18n.LocaleManager;
+import dev.russia9.trainpix.lib.Reference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
@@ -38,12 +39,12 @@ public class HelpModule implements BotModule {
         }
         logger.trace("Detected LANG: " + lang);
 
-        reply.setAuthor("TrainPix");
+        reply.setAuthor(Reference.botName, Reference.botSourcesLink, Reference.botImageLink);
 
         reply.addField(localeManager.getString(lang, "list.help.title"), localeManager.getString(lang, "list.help.description"));
         reply.addField(localeManager.getString(lang, "photo.help.title"), localeManager.getString(lang, "photo.help.description"));
 
-        reply.setFooter("(c) Russia9 2019");
+        reply.setFooter(Reference.botName + " v1.1-snapshot");
         event.getChannel().sendMessage(reply);
     }
 }

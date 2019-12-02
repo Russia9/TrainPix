@@ -1,6 +1,7 @@
 package dev.russia9.trainpix.modules;
 
 import dev.russia9.trainpix.i18n.LocaleManager;
+import dev.russia9.trainpix.lib.Reference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
@@ -137,18 +138,19 @@ public class PhotoModule implements BotModule {
                         }
                     }
 
-                    reply.setAuthor(searchQuery, authorLink, "https://cdn.discordapp.com/avatars/600625694837571584/2f125e525b56d3aff223022d0b24282f.png?size=128");
+                    reply.setAuthor(searchQuery, authorLink, Reference.botImageLink);
                     reply.addField(roadName + " | " + depotName, categoryName + " | " + stateText);
                     reply.setImage(photoLink);
                     reply.setColor(color);
                     reply.setFooter(authorName + " | " + buildDate);
                 } else { // 404
-                    reply.setAuthor("TrainPix");
+                    reply.setAuthor(Reference.botName);
                     reply.setTitle(localeManager.getString(lang, "errors.404.header"));
                     reply.addField(localeManager.getString(lang, "errors.404.title"), localeManager.getString(lang, "errors.404.description"));
                 }
             } catch (IOException e) {
                 logger.warn(e);
+                reply.setAuthor(Reference.botName);
                 reply.setTitle(localeManager.getString(lang, "errors.500.header"));
                 reply.addField(localeManager.getString(lang, "errors.500.title"), localeManager.getString(lang, "errors.500.description"));
             }
