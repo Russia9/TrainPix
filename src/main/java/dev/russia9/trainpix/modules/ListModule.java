@@ -46,15 +46,14 @@ public class ListModule implements BotModule {
             String searchQuery = message[1];
             EmbedBuilder reply = new EmbedBuilder();
 
+            String lang = "en";
+            if (event.isServerMessage() && event.getServer().get().getRegion().getKey().equals("russia")) {
+                lang = "ru";
+            }
+            logger.trace("Detected LANG: " + lang);
+
             try {
                 String searchUrl = "https://trainpix.org/vsearch.php?cid=0&did=0&mid=0&zid=0&serial_type=&works_number=&id_number=&anybuilt=1&anywritt=1&state=0&note=&info=&order=0&num=" + URLEncoder.encode(searchQuery, "UTF-8");
-
-                String lang = "en";
-                if (event.isServerMessage() && event.getServer().get().getRegion().getKey().equals("russia")) {
-                    lang = "ru";
-                }
-                logger.trace("Detected LANG: " + lang);
-
                 Document document = getPage(searchUrl, lang);
 
                 if (document.getElementsContainingOwnText(localeManager.getString(lang, "list.nothing")).isEmpty()) {
@@ -165,16 +164,18 @@ public class ListModule implements BotModule {
                         ++currentTrain;
                     }
 
-                    reply.setAuthor("TrainPix");
+                    reply.setAuthor(Reference.botName);
                     reply.setTitle(searchQuery);
                     reply.setFooter(localeManager.getString(lang, "list.results") + i + "/" + count);
                 } else {
-                    reply.setAuthor("TrainPix");
-                    reply.setTitle("404 Error");
-                    reply.addField("Nothing found!", "Try other query");
+                    reply.setAuthor(Reference.botName);
+                    reply.setTitle(localeManager.getString(lang, "errors.404.header"));
+                    reply.addField(localeManager.getString(lang, "errors.404.title"), localeManager.getString(lang, "errors.404.description"));
                 }
             } catch (IOException e) {
                 logger.warn(e);
+                reply.setTitle(localeManager.getString(lang, "errors.500.header"));
+                reply.addField(localeManager.getString(lang, "errors.500.title"), localeManager.getString(lang, "errors.500.description"));
             }
 
             event.getChannel().sendMessage(reply);
