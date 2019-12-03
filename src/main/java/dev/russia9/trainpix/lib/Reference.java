@@ -7,6 +7,11 @@ public class Reference {
     public static final String botName = "TrainPix";
 
     /**
+     * Bot version
+     */
+    public static final String botVersion = "1.1";
+
+    /**
      * TrainPix image
      */
     public static final String botImageLink = "https://cdn.discordapp.com/avatars/600625694837571584/2f125e525b56d3aff223022d0b24282f.png?size=512";
