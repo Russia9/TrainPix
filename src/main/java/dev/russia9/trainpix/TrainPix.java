@@ -50,7 +50,7 @@ public class TrainPix {
             }
         }
 
-        logger.info(Reference.botName + " v0.1 by Russia9");
+        logger.info(Reference.botName + " " + Reference.botVersion + " by Russia9");
         logger.info("For more information: " + Reference.botSourcesLink);
 
         new Bootstrap();
