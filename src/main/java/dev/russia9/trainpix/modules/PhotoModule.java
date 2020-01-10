@@ -64,7 +64,6 @@ public class PhotoModule implements BotModule {
                     Document photoPage = getPage(photoPageLink, lang);
                     String photoLink = "https://trainpix.org" + photoPage.getElementById("ph").attr("src");
                     String authorName = photoPage.getElementsByClass("cmt_aname").get(0).getElementsByTag("a").text();
-                    String authorLink = "https://trainpix.org" + photoPage.getElementsByClass("cmt_aname").get(0).getElementsByTag("a").attr("href");
                     String trainLink = "https://trainpix.org" + photoPage.getElementsByClass("pwrite").get(0).child(0).attr("href");
                     Document trainPage = getPage(trainLink, lang);
 
@@ -138,7 +137,7 @@ public class PhotoModule implements BotModule {
                         }
                     }
 
-                    reply.setAuthor(searchQuery, authorLink, Reference.botImageLink);
+                    reply.setAuthor(searchQuery, trainLink, Reference.botImageLink);
                     reply.addField(roadName + " | " + depotName, categoryName + " | " + stateText);
                     reply.setImage(photoLink);
                     reply.setColor(color);

@@ -9,7 +9,7 @@ public class Reference {
     /**
      * Bot version
      */
-    public static final String botVersion = "1.1";
+    public static final String botVersion = "1.2";
 
     /**
      * TrainPix image
