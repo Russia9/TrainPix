@@ -53,7 +53,7 @@ public class ListModule implements BotModule {
             logger.trace("Detected LANG: " + lang);
 
             try {
-                String searchUrl = "https://trainpix.org/vsearch.php?cid=0&did=0&mid=0&zid=0&serial_type=&works_number=&id_number=&anybuilt=1&anywritt=1&state=0&note=&info=&order=0&num=" + URLEncoder.encode(searchQuery, "UTF-8");
+                String searchUrl = "https://trainpix.org/vsearch.php?anybuilt=1&anywritt=1&order=0&num=" + URLEncoder.encode(searchQuery, "UTF-8");
                 Document document = getPage(searchUrl, lang);
 
                 if (document.getElementsContainingOwnText(localeManager.getString(lang, "list.nothing")).isEmpty()) {
