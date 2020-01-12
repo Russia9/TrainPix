@@ -53,7 +53,7 @@ public class PhotoModule implements BotModule {
             logger.trace("Detected LANG:" + lang);
 
             try {
-                String searchUrl = "https://trainpix.org/vsearch.php?&order=2&strict=on&num=" + URLEncoder.encode(searchQuery, "UTF-8");
+                String searchUrl = "https://trainpix.org/vsearch.php?&order=2&num=" + URLEncoder.encode(searchQuery, "UTF-8");
                 Document document = getPage(searchUrl, lang);
 
                 String trainLink = "https://trainpix.org/" + document.getElementsByClass("main").get(0)
