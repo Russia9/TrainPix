@@ -25,8 +25,8 @@ import static dev.russia9.trainpix.lib.ParseHelper.getPage;
  */
 public class PhotoModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
-    private LocaleManager localeManager;
-    private String[] aliases = {
+    private final LocaleManager localeManager;
+    private final String[] aliases = {
             "photo",
             "p"
     };
@@ -145,7 +145,7 @@ public class PhotoModule implements BotModule {
                 }
 
                 reply.setTitle(trainName);
-                reply.setAuthor(searchQuery.toString(), trainLink, Reference.botImageLink);
+                reply.setAuthor(searchQuery, trainLink, Reference.botImageLink);
                 reply.addField(roadName + " | " + depotName, categoryName + " | " + stateText);
                 reply.setImage(photoImage);
                 reply.setColor(color);

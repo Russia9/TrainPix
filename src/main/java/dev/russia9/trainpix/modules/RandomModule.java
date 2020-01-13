@@ -12,7 +12,6 @@ import org.jsoup.select.Elements;
 
 import java.awt.*;
 import java.io.IOException;
-import java.net.URLEncoder;
 
 import static dev.russia9.trainpix.lib.ParseHelper.getPage;
 
@@ -24,8 +23,8 @@ import static dev.russia9.trainpix.lib.ParseHelper.getPage;
  */
 public class RandomModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
-    private LocaleManager localeManager;
-    private String[] aliases = {
+    private final LocaleManager localeManager;
+    private final String[] aliases = {
             "random",
             "rd"
     };
@@ -41,8 +40,6 @@ public class RandomModule implements BotModule {
 
     @Override
     public void process(MessageCreateEvent event) {
-
-
         EmbedBuilder reply = new EmbedBuilder();
 
         String lang = "en";

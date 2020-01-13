@@ -12,7 +12,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URLEncoder;
 
@@ -26,8 +25,8 @@ import static dev.russia9.trainpix.lib.ParseHelper.getPage;
  */
 public class ListModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
-    private LocaleManager localeManager;
-    private String[] aliases = {
+    private final LocaleManager localeManager;
+    private final String[] aliases = {
             "list",
             "l"
     };
@@ -68,7 +67,7 @@ public class ListModule implements BotModule {
                 int i = 0;
 
                 for (Element trainRow : trains) {
-                    if(i >= Reference.maxListSize) {
+                    if (i >= Reference.maxListSize) {
                         break;
                     }
                     StringBuilder head = new StringBuilder();

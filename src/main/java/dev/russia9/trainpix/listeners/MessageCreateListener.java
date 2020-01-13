@@ -15,7 +15,7 @@ import org.javacord.api.event.message.MessageCreateEvent;
  */
 public class MessageCreateListener implements org.javacord.api.listener.message.MessageCreateListener {
     private static final Logger logger = LogManager.getLogger("TrainPix");
-    private BotModule[] modules;
+    private final BotModule[] modules;
 
     public MessageCreateListener(LocaleManager localeManager) {
         modules = new BotModule[]{
