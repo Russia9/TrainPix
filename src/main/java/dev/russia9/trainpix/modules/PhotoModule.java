@@ -1,6 +1,7 @@
 package dev.russia9.trainpix.modules;
 
 import dev.russia9.trainpix.i18n.LocaleManager;
+import dev.russia9.trainpix.lib.Lib;
 import dev.russia9.trainpix.lib.Reference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,8 +43,9 @@ public class PhotoModule implements BotModule {
     @Override
     public void process(MessageCreateEvent event) {
         String[] message = event.getMessageContent().split(" ");
-        if (message.length == 2) { // First page
-            String searchQuery = message[1];
+        if (message.length >= 2) { // First page
+            String searchQuery = Lib.getSearchQuery(message);
+
             EmbedBuilder reply = new EmbedBuilder();
 
             String lang = "en";
@@ -143,7 +145,7 @@ public class PhotoModule implements BotModule {
                 }
 
                 reply.setTitle(trainName);
-                reply.setAuthor(searchQuery, trainLink, Reference.botImageLink);
+                reply.setAuthor(searchQuery.toString(), trainLink, Reference.botImageLink);
                 reply.addField(roadName + " | " + depotName, categoryName + " | " + stateText);
                 reply.setImage(photoImage);
                 reply.setColor(color);

@@ -2,6 +2,7 @@ package dev.russia9.trainpix.modules;
 
 
 import dev.russia9.trainpix.i18n.LocaleManager;
+import dev.russia9.trainpix.lib.Lib;
 import dev.russia9.trainpix.lib.Reference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,8 +44,9 @@ public class ListModule implements BotModule {
     @Override
     public void process(MessageCreateEvent event) {
         String[] message = event.getMessageContent().split(" ");
-        if (message.length == 2) { // First page
-            String searchQuery = message[1];
+        if (message.length >= 2) { // First page
+            String searchQuery = Lib.getSearchQuery(message);
+
             EmbedBuilder reply = new EmbedBuilder();
 
             String lang = "en";

@@ -2,10 +2,7 @@ package dev.russia9.trainpix.listeners;
 
 import dev.russia9.trainpix.i18n.LocaleManager;
 import dev.russia9.trainpix.lib.Reference;
-import dev.russia9.trainpix.modules.BotModule;
-import dev.russia9.trainpix.modules.HelpModule;
-import dev.russia9.trainpix.modules.ListModule;
-import dev.russia9.trainpix.modules.PhotoModule;
+import dev.russia9.trainpix.modules.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.javacord.api.event.message.MessageCreateEvent;
@@ -24,7 +21,8 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
         modules = new BotModule[]{
                 new ListModule(localeManager),
                 new PhotoModule(localeManager),
-                new HelpModule(localeManager)
+                new HelpModule(localeManager),
+                new RandomModule(localeManager)
         };
     }
 
