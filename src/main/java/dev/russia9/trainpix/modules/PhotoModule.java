@@ -1,6 +1,7 @@
 package dev.russia9.trainpix.modules;
 
 import dev.russia9.trainpix.i18n.LocaleManager;
+import dev.russia9.trainpix.lib.Lib;
 import dev.russia9.trainpix.lib.Reference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,8 +25,8 @@ import static dev.russia9.trainpix.lib.ParseHelper.getPage;
  */
 public class PhotoModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
-    private LocaleManager localeManager;
-    private String[] aliases = {
+    private final LocaleManager localeManager;
+    private final String[] aliases = {
             "photo",
             "p"
     };
@@ -42,8 +43,9 @@ public class PhotoModule implements BotModule {
     @Override
     public void process(MessageCreateEvent event) {
         String[] message = event.getMessageContent().split(" ");
-        if (message.length == 2) { // First page
-            String searchQuery = message[1];
+        if (message.length >= 2) { // First page
+            String searchQuery = Lib.getSearchQuery(message);
+
             EmbedBuilder reply = new EmbedBuilder();
 
             String lang = "en";
@@ -53,7 +55,7 @@ public class PhotoModule implements BotModule {
             logger.trace("Detected LANG:" + lang);
 
             try {
-                String searchUrl = "https://trainpix.org/vsearch.php?&order=2&strict=on&num=" + URLEncoder.encode(searchQuery, "UTF-8");
+                String searchUrl = "https://trainpix.org/vsearch.php?&order=2&num=" + URLEncoder.encode(searchQuery, "UTF-8");
                 Document document = getPage(searchUrl, lang);
 
                 String trainLink = "https://trainpix.org/" + document.getElementsByClass("main").get(0)

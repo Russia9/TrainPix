@@ -15,8 +15,8 @@ import org.javacord.api.event.message.MessageCreateEvent;
  */
 public class HelpModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
-    private LocaleManager localeManager;
-    private String[] aliases = {
+    private final LocaleManager localeManager;
+    private final String[] aliases = {
             "help"
     };
 

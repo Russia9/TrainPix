@@ -2,6 +2,7 @@ package dev.russia9.trainpix.modules;
 
 
 import dev.russia9.trainpix.i18n.LocaleManager;
+import dev.russia9.trainpix.lib.Lib;
 import dev.russia9.trainpix.lib.Reference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +12,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URLEncoder;
 
@@ -25,8 +25,8 @@ import static dev.russia9.trainpix.lib.ParseHelper.getPage;
  */
 public class ListModule implements BotModule {
     private static final Logger logger = LogManager.getLogger("TrainPix");
-    private LocaleManager localeManager;
-    private String[] aliases = {
+    private final LocaleManager localeManager;
+    private final String[] aliases = {
             "list",
             "l"
     };
@@ -43,8 +43,9 @@ public class ListModule implements BotModule {
     @Override
     public void process(MessageCreateEvent event) {
         String[] message = event.getMessageContent().split(" ");
-        if (message.length == 2) { // First page
-            String searchQuery = message[1];
+        if (message.length >= 2) { // First page
+            String searchQuery = Lib.getSearchQuery(message);
+
             EmbedBuilder reply = new EmbedBuilder();
 
             String lang = "en";
@@ -66,7 +67,7 @@ public class ListModule implements BotModule {
                 int i = 0;
 
                 for (Element trainRow : trains) {
-                    if(i >= Reference.maxListSize) {
+                    if (i >= Reference.maxListSize) {
                         break;
                     }
                     StringBuilder head = new StringBuilder();

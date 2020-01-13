@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class LocaleManager {
-    private ResourceBundle[] resourceBundles;
+    private final ResourceBundle[] resourceBundles;
 
     public LocaleManager() {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
