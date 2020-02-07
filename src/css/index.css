@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background: #34383c;
+    max-width: 100vw;
+    overflow-x: hidden;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-family: Poppins, Helvetica, sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.5em;
+    margin-top: 0;
+    padding: 20px 0 10px 0;
+    color: #fff;
+}
+
+p {
+    line-height: 1.8em;
+    color: #969899;
+    margin-top: 5px;
+    font-size: 19px;
+}
